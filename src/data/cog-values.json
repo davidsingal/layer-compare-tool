@@ -1,0 +1,522 @@
+{
+  "1": {
+    "short_name": "T1.1 Trop lowland rainforests",
+    "color": [
+      83,
+      121,
+      123
+    ]
+  },
+  "2": {
+    "short_name": "T1.2 Trop dry forests",
+    "color": [
+      214,
+      142,
+      103
+    ]
+  },
+  "3": {
+    "short_name": "T1.3 Trop montane rainforests",
+    "color": [
+      130,
+      124,
+      180
+    ]
+  },
+  "7": {
+    "short_name": "T2.1 Boreal\\/montane forests",
+    "color": [
+      223,
+      148,
+      17
+    ]
+  },
+  "8": {
+    "short_name": "T2.2 Deciduous temperate forests",
+    "color": [
+      59,
+      32,
+      132
+    ]
+  },
+  "10": {
+    "short_name": "T2.4 Warm temp rainforests",
+    "color": [
+      172,
+      7,
+      25
+    ]
+  },
+  "11": {
+    "short_name": "T2.5 Temp pyric humid forests",
+    "color": [
+      19,
+      33,
+      10
+    ]
+  },
+  "12": {
+    "short_name": "T2.6 Temp sclerophyll forests",
+    "color": [
+      215,
+      32,
+      75
+    ]
+  },
+  "16": {
+    "short_name": "T3.1 Seas dry trop shrublands",
+    "color": [
+      93,
+      47,
+      140
+    ]
+  },
+  "17": {
+    "short_name": "T3.2 Seas dry temp shrublands",
+    "color": [
+      226,
+      164,
+      129
+    ]
+  },
+  "18": {
+    "short_name": "T3.3 Cool temp heathlands",
+    "color": [
+      26,
+      64,
+      7
+    ]
+  },
+  "19": {
+    "short_name": "T3.4 Rocky pavements",
+    "color": [
+      168,
+      127,
+      45
+    ]
+  },
+  "22": {
+    "short_name": "T4.1 Trophic savannas",
+    "color": [
+      221,
+      186,
+      158
+    ]
+  },
+  "23": {
+    "short_name": "T4.2 Pyric tussock savannas",
+    "color": [
+      218,
+      218,
+      83
+    ]
+  },
+  "24": {
+    "short_name": "T4.3 Hummock savannas",
+    "color": [
+      229,
+      116,
+      156
+    ]
+  },
+  "25": {
+    "short_name": "T4.4 Temp woodlands",
+    "color": [
+      232,
+      93,
+      73
+    ]
+  },
+  "26": {
+    "short_name": "T4.5 Temperate grasslands",
+    "color": [
+      207,
+      165,
+      43
+    ]
+  },
+  "30": {
+    "short_name": "T5.1 Semi-desert steppe",
+    "color": [
+      246,
+      157,
+      243
+    ]
+  },
+  "31": {
+    "short_name": "T5.2 Succulent\\/Thorny deserts",
+    "color": [
+      67,
+      245,
+      231
+    ]
+  },
+  "32": {
+    "short_name": "T5.3 Sclerophyll hot deserts",
+    "color": [
+      77,
+      84,
+      50
+    ]
+  },
+  "33": {
+    "short_name": "T5.4 Cool temperate deserts",
+    "color": [
+      186,
+      251,
+      45
+    ]
+  },
+  "34": {
+    "short_name": "T5.5 Hyper-arid deserts",
+    "color": [
+      180,
+      3,
+      90
+    ]
+  },
+  "38": {
+    "short_name": "T6.1 Permanent snow",
+    "color": [
+      81,
+      27,
+      190
+    ]
+  },
+  "39": {
+    "short_name": "T6.2 Polar\\/alpine rock",
+    "color": [
+      88,
+      204,
+      206
+    ]
+  },
+  "40": {
+    "short_name": "T6.3 Polar tundra",
+    "color": [
+      168,
+      238,
+      200
+    ]
+  },
+  "41": {
+    "short_name": "T6.4 Temp alpine grasslands",
+    "color": [
+      120,
+      144,
+      106
+    ]
+  },
+  "46": {
+    "short_name": "T7.1 Croplands",
+    "color": [
+      129,
+      0,
+      64
+    ]
+  },
+  "47": {
+    "short_name": "T7.2 Sown pastures and fields",
+    "color": [
+      126,
+      254,
+      56
+    ]
+  },
+  "48": {
+    "short_name": "T7.3 Plantations",
+    "color": [
+      105,
+      53,
+      203
+    ]
+  },
+  "49": {
+    "short_name": "T7.4 Urban and industrial",
+    "color": [
+      51,
+      201,
+      129
+    ]
+  },
+  "50": {
+    "short_name": "T7.5 Semi-natural old fields",
+    "color": [
+      222,
+      104,
+      35
+    ]
+  },
+  "70": {
+    "short_name": "TF1.1 Trop flooded\\/peat forests",
+    "color": [
+      32,
+      208,
+      47
+    ]
+  },
+  "71": {
+    "short_name": "TF1.2 Temp forested wetlands",
+    "color": [
+      197,
+      199,
+      70
+    ]
+  },
+  "73": {
+    "short_name": "TF1.4 Seasonal floodplain marshes",
+    "color": [
+      37,
+      46,
+      66
+    ]
+  },
+  "74": {
+    "short_name": "TF1.5 Episodic arid floodplains",
+    "color": [
+      211,
+      228,
+      222
+    ]
+  },
+  "75": {
+    "short_name": "TF1.6 Boreal\\/temperate bogs",
+    "color": [
+      100,
+      117,
+      125
+    ]
+  },
+  "76": {
+    "short_name": "TF1.7 Boreal\\/temperate fens",
+    "color": [
+      41,
+      243,
+      63
+    ]
+  },
+  "93": {
+    "short_name": "F2.2 Small perm lakes",
+    "color": [
+      71,
+      74,
+      7
+    ]
+  },
+  "95": {
+    "short_name": "F2.4 Freeze-thaw lakes",
+    "color": [
+      45,
+      189,
+      157
+    ]
+  },
+  "96": {
+    "short_name": "F2.5 Ephemeral lakes",
+    "color": [
+      58,
+      66,
+      81
+    ]
+  },
+  "98": {
+    "short_name": "F2.7 Ephem salt lakes",
+    "color": [
+      2,
+      69,
+      181
+    ]
+  },
+  "99": {
+    "short_name": "F2.8 Artesian springs\\/oases",
+    "color": [
+      29,
+      110,
+      127
+    ]
+  },
+  "108": {
+    "short_name": "F3.2 Constructed lacustrine wetlands",
+    "color": [
+      47,
+      154,
+      76
+    ]
+  },
+  "116": {
+    "short_name": "FM1.2 Riverine estuaries and bays",
+    "color": [
+      154,
+      211,
+      47
+    ]
+  },
+  "117": {
+    "short_name": "FM1.3 Closed\\/open inlets",
+    "color": [
+      119,
+      238,
+      195
+    ]
+  },
+  "120": {
+    "short_name": "M1.1 Seagrass meadows",
+    "color": [
+      252,
+      252,
+      8
+    ]
+  },
+  "121": {
+    "short_name": "M1.2 Kelp forests",
+    "color": [
+      102,
+      151,
+      198
+    ]
+  },
+  "122": {
+    "short_name": "M1.3 Photic coral reefs",
+    "color": [
+      59,
+      8,
+      44
+    ]
+  },
+  "124": {
+    "short_name": "M1.5 Marine animal forests",
+    "color": [
+      181,
+      21,
+      149
+    ]
+  },
+  "125": {
+    "short_name": "M1.6 Subtidal rock reefs",
+    "color": [
+      41,
+      46,
+      32
+    ]
+  },
+  "126": {
+    "short_name": "M1.7 Subtidal sand beds",
+    "color": [
+      209,
+      225,
+      199
+    ]
+  },
+  "127": {
+    "short_name": "M1.8 Subtidal mud plains",
+    "color": [
+      32,
+      30,
+      186
+    ]
+  },
+  "143": {
+    "short_name": "M3.1 Continental slopes",
+    "color": [
+      191,
+      220,
+      30
+    ]
+  },
+  "144": {
+    "short_name": "M3.2 Submarine canyons",
+    "color": [
+      84,
+      125,
+      128
+    ]
+  },
+  "145": {
+    "short_name": "M3.3 Abyssal plains",
+    "color": [
+      64,
+      250,
+      11
+    ]
+  },
+  "146": {
+    "short_name": "M3.4 Seamounts",
+    "color": [
+      66,
+      241,
+      190
+    ]
+  },
+  "147": {
+    "short_name": "M3.5 Deepwater biogenic beds",
+    "color": [
+      26,
+      212,
+      4
+    ]
+  },
+  "157": {
+    "short_name": "MT1.1 Rocky shores",
+    "color": [
+      11,
+      137,
+      169
+    ]
+  },
+  "158": {
+    "short_name": "MT1.2 Muddy shores",
+    "color": [
+      122,
+      84,
+      221
+    ]
+  },
+  "159": {
+    "short_name": "MT1.3 Sandy shores",
+    "color": [
+      239,
+      155,
+      14
+    ]
+  },
+  "160": {
+    "short_name": "MT1.4 Cobble shores",
+    "color": [
+      193,
+      83,
+      248
+    ]
+  },
+  "163": {
+    "short_name": "MT2.1 Coastal shrublands and grasslands",
+    "color": [
+      18,
+      40,
+      223
+    ]
+  },
+  "164": {
+    "short_name": "MT2.2 Seabird rookeries",
+    "color": [
+      152,
+      78,
+      75
+    ]
+  },
+  "169": {
+    "short_name": "MFT1.2 Intertidal forests",
+    "color": [
+      109,
+      216,
+      132
+    ]
+  },
+  "170": {
+    "short_name": "MFT1.3 Coastal saltmarsh",
+    "color": [
+      176,
+      49,
+      150
+    ]
+  }
+}

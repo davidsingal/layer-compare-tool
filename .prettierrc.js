@@ -1,5 +1,3 @@
-// const PluginTailwindCSS = require('prettier-plugin-tailwindcss');
-
 const config = {
   semi: true,
   tabWidth: 2,
