@@ -7,9 +7,28 @@ import { useAtom } from 'jotai';
 
 import layersAtom from '@/store/layers';
 import { usePointMutation } from '@/hooks/cog';
+import cogValues from '@/data/cog-values.json';
+
+const rgbToHex = (r: number, g: number, b: number) =>
+  '#' +
+  [r, g, b]
+    .map((x) => {
+      const hex = x.toString(16);
+      return hex.length === 1 ? '0' + hex : hex;
+    })
+    .join('');
+
+const values: Record<number, { short_name: string; color: number[] }> = cogValues;
 
 const TIF_URL =
   'https://global-ecosystem-atlas-staging-assets-bucket.s3.eu-west-3.amazonaws.com/latest/EFG_Type/100m/Global_EFG_Type_100m_8bit_wgs84.tif';
+// https://titiler.xyz/api.html#/Cloud%20Optimized%20GeoTIFF/tile_cog_tiles__tileMatrixSetId___z___x___y___scale_x_get
+const COLOR_MAP = Object.fromEntries(
+  Object.entries(values).map(([key, value]) => [
+    key,
+    rgbToHex(value.color[0], value.color[1], value.color[2]),
+  ]),
+);
 
 const MapComponent: React.FC = () => {
   const compareRef = useRef<Compare | null>(null);
@@ -78,8 +97,9 @@ const MapComponent: React.FC = () => {
         <Source
           type="raster"
           tiles={[
-            `${process.env.NEXT_PUBLIC_TTILER}?visible=True\u0026url=${TIF_URL}\u0026bidx=1\u0026rescale=-2828.0%2C5514.0`,
+            `${process.env.NEXT_PUBLIC_TTILER}?visible=True\u0026url=${TIF_URL}\u0026bidx=1\u0026colormap=${encodeURIComponent(JSON.stringify(COLOR_MAP))}`,
           ]}
+          tileSize={256}
         >
           <Layer id="default-right-layer" type="raster" />
         </Source>
