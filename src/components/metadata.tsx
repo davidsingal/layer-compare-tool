@@ -18,7 +18,7 @@ const Metadata: React.FC = () => {
   const pointMutationData = pointMutation?.data as AxiosResponse<PointResponse> | undefined;
 
   return (
-    <div className="p-2">
+    <div className="p-2 text-sm">
       {pointMutation?.status === 'success' && pointMutationData && (
         <div>
           <h3>
@@ -29,7 +29,7 @@ const Metadata: React.FC = () => {
         </div>
       )}
       {pointMutation?.status === 'pending' && <div>Loading...</div>}
-      {!pointMutation && <div>Click on the map to view metadata</div>}
+      {!pointMutation && <div>Click on the map to get the data point</div>}
     </div>
   );
 };
