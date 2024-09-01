@@ -3,7 +3,9 @@
 import { useRef, useEffect, useState } from 'react';
 import Map, { Layer, Source, useMap } from 'react-map-gl/maplibre';
 import Compare from '@maplibre/maplibre-gl-compare';
+import { useAtom } from 'jotai';
 
+import layersAtom from '@/store/layers';
 import { usePointMutation } from '@/hooks/cog';
 
 const TIF_URL =
@@ -12,6 +14,7 @@ const TIF_URL =
 const MapComponent: React.FC = () => {
   const compareRef = useRef<Compare | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [layers] = useAtom(layersAtom);
   const { leftMap, rightMap } = useMap();
   const pointMutation = usePointMutation();
 
@@ -46,7 +49,13 @@ const MapComponent: React.FC = () => {
         onClick={(e) => {
           pointMutation.mutate({ lon: e.lngLat.lng, lat: e.lngLat.lat, url: TIF_URL, bidx: 1 });
         }}
-      />
+      >
+        {layers.map((layerSpec) => (
+          <Source key={layerSpec.id} {...layerSpec.source}>
+            <Layer {...layerSpec.layer} />
+          </Source>
+        ))}
+      </Map>
       <Map
         id="rightMap"
         initialViewState={{
@@ -69,10 +78,10 @@ const MapComponent: React.FC = () => {
         <Source
           type="raster"
           tiles={[
-            `https://titiler.xyz/cog/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?visible=True\u0026url=${TIF_URL}\u0026bidx=1\u0026rescale=-2828.0%2C5514.0`,
+            `${process.env.NEXT_PUBLIC_TTILER}?visible=True\u0026url=${TIF_URL}\u0026bidx=1\u0026rescale=-2828.0%2C5514.0`,
           ]}
         >
-          <Layer id="layer" type="raster" />
+          <Layer id="default-right-layer" type="raster" />
         </Source>
       </Map>
     </div>
