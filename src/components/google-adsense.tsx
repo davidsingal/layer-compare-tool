@@ -13,11 +13,9 @@ const GoogleAdsense: React.FC = () => {
       />
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{ display: 'block', height: '64px', width: '768px' }}
         data-ad-client="ca-pub-7918890133851349"
         data-ad-slot="1901695133"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
       />
       <Script id="ads">{`(adsbygoogle = window.adsbygoogle || []).push({});`}</Script>
     </>
