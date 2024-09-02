@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 import { useAtom } from 'jotai';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
-import layersAtom from '@/store/layers';
+import { leftLayersAtom, rightLayersAtom } from '@/store/layers';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
@@ -24,8 +24,8 @@ type Inputs = {
   colorMap?: string;
 };
 
-const Sidebar: React.FC = () => {
-  const [layers, setLayers] = useAtom(layersAtom);
+const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }) => {
+  const [layers, setLayers] = useAtom(position === 'left' ? leftLayersAtom : rightLayersAtom);
   const {
     control,
     register,
@@ -129,9 +129,9 @@ const Sidebar: React.FC = () => {
       {watch('service') === 'cog' && (
         <div className="space-y-2">
           <label htmlFor="cogStyles" className="text-sm">
-            COG styles:
+            Color map:
           </label>
-          <Textarea {...register('colorMap')} />
+          <Textarea {...register('colorMap')} placeholder={'{ "key": "#ff0000" }'} />
         </div>
       )}
       <Button type="submit">Add layer</Button>

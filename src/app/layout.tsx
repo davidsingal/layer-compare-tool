@@ -11,7 +11,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Layer Visualizer',
+  title: 'Layer Compare Tool | David Inga',
   description: 'Visualize the layers of a list of sources',
 };
 
@@ -25,7 +25,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>
-      <GoogleAnalytics gaId="G-98MQNSE16Y" />
+      {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+      )}
     </html>
   );
 }

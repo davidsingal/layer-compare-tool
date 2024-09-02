@@ -4,12 +4,12 @@ import { useCallback } from 'react';
 import { useAtom } from 'jotai';
 import { XIcon } from 'lucide-react';
 
-import layersAtom from '@/store/layers';
+import { leftLayersAtom, rightLayersAtom } from '@/store/layers';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-const ActiveLayers: React.FC = () => {
-  const [layers, setLayers] = useAtom(layersAtom);
+const ActiveLayers: React.FC<{ position: 'right' | 'left' }> = ({ position }) => {
+  const [layers, setLayers] = useAtom(position === 'left' ? leftLayersAtom : rightLayersAtom);
 
   const handleRemoveLayer = useCallback(
     (id: string) => {

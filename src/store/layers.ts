@@ -2,6 +2,6 @@ import { atom } from 'jotai';
 
 import type { LayerSpec } from '@/types/layers';
 
-const layersAtom = atom<LayerSpec[]>([]);
+export const leftLayersAtom = atom<LayerSpec[]>([]);
 
-export default layersAtom;
+export const rightLayersAtom = atom<LayerSpec[]>([]);
