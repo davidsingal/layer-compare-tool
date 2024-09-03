@@ -9,7 +9,7 @@ const Map = dynamic(() => import('@/components/map'), { ssr: false });
 
 export default function Home() {
   return (
-    <div className="flex h-full min-h-[768px] w-full flex-col">
+    <div className="flex h-screen min-h-[768px] w-full flex-col">
       <Header />
       <main className="flex grow px-6">
         <div className="min-w-[300px] space-y-6 py-6">
