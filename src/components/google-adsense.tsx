@@ -13,7 +13,7 @@ const GoogleAdsense: React.FC = () => {
       />
       <ins
         className="adsbygoogle"
-        style={{ display: 'block', height: '300px', width: '250px' }}
+        style={{ display: 'block', height: '250px', width: '300px' }}
         data-ad-client="ca-pub-7918890133851349"
         data-ad-slot="1901695133"
       />
