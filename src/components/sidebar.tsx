@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/select';
 
 type Inputs = {
-  service: 'cog' | 'wms';
+  service: 'cog' | 'wms' | 'tiles';
   layerName: string;
   url: string;
   band?: number;
@@ -89,6 +89,7 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="cog">Cloud Optimized GeoTIF</SelectItem>
+                <SelectItem value="tiles">Raster tiles</SelectItem>
                 <SelectItem value="wms">WMS</SelectItem>
               </SelectContent>
             </Select>
