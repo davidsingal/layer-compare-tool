@@ -10,6 +10,7 @@ const GoogleAdsense: React.FC = () => {
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7918890133851349"
         crossOrigin="anonymous"
+        strategy="afterInteractive"
       />
       <ins
         className="adsbygoogle"
@@ -17,7 +18,15 @@ const GoogleAdsense: React.FC = () => {
         data-ad-client="ca-pub-7918890133851349"
         data-ad-slot="1901695133"
       />
-      <Script id="ads">{`(adsbygoogle = window.adsbygoogle || []).push({});`}</Script>
+      <Script
+        id="adsbygoogle-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          `,
+        }}
+      />
     </>
   );
 };
