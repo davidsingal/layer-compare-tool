@@ -60,7 +60,7 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
           },
         ]);
       }
-      if (data.service === 'wms') {
+      if (data.service === 'wms' || data.service === 'tiles') {
         setLayers([
           ...layers,
           {
