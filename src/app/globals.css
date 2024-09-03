@@ -90,3 +90,12 @@
     @apply text-sm font-medium leading-none;
   }
 }
+
+.maplibregl-compare {
+  @apply bg-primary;
+}
+
+.maplibregl-compare .compare-swiper-vertical {
+  @apply bg-primary h-10 w-10 -left-5 -mt-5 bg-no-repeat bg-center;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9ucy1sZWZ0LXJpZ2h0Ij48cGF0aCBkPSJtOSA3LTUgNSA1IDUiLz48cGF0aCBkPSJtMTUgNyA1IDUtNSA1Ii8+PC9zdmc+');
+}
