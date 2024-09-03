@@ -3,26 +3,30 @@ import dynamic from 'next/dynamic';
 import Header from '@/components/header';
 import Sidebar from '@/components/sidebar';
 import ActiveLayers from '@/components/active-layers';
+import GoogleAdsense from '@/components/google-adsense';
 
 const Map = dynamic(() => import('@/components/map'), { ssr: false });
 
 export default function Home() {
   return (
-    <>
+    <div className="flex h-full min-h-[768px] w-full flex-col">
       <Header />
-      <main className="fixed left-0 top-16 grid h-[calc(100vh-64px)] w-full grid-cols-6 divide-x">
-        <div className="divide-y overflow-y-auto">
+      <main className="flex grow px-6">
+        <div className="min-w-[300px] space-y-6 py-6">
           <Sidebar position="left" />
-          <ActiveLayers position="left" />
+          <GoogleAdsense />
         </div>
-        <div className="relative col-span-4 grow">
-          <Map />
+        <div className="flex grow p-6">
+          <div className="relative grow overflow-hidden rounded-md border">
+            <Map />
+            <ActiveLayers position="left" />
+            <ActiveLayers position="right" />
+          </div>
         </div>
-        <div className="divide-y overflow-y-auto">
+        <div className="min-w-[300px] space-y-6 py-6">
           <Sidebar position="right" />
-          <ActiveLayers position="right" />
         </div>
       </main>
-    </>
+    </div>
   );
 }

@@ -76,11 +76,9 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
   );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-2">
-        <label htmlFor="name" className="text-sm">
-          Select layer service to compare to the map:
-        </label>
+        <label htmlFor="name">Type</label>
         <Controller
           control={control}
           name="service"
@@ -98,43 +96,39 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
         />
       </div>
       <div className="space-y-2">
-        <label htmlFor="name" className="text-sm">
-          Layer Name:
-        </label>
+        <label htmlFor="name">Layer Name</label>
         <Input
           {...register('name', { required: 'Name field is required' })}
           className={errors.name && 'border-red-500'}
+          placeholder="e.g. Landsat 8"
         />
         {errors.name && <div className="text-sm text-red-500">{errors.name.message}</div>}
       </div>
       <div className="space-y-2">
-        <label htmlFor="url" className="text-sm">
-          Enter the dataset URL:
-        </label>
+        <label htmlFor="url">Dataset URL</label>
         <Input
           {...register('url', { required: 'URL field is required' })}
           type="url"
           className={errors.name && 'border-red-500'}
+          placeholder='e.g. "https://example.com/{z}/{x}/{y}.png"'
         />
         {errors.url && <div className="text-sm text-red-500">{errors.url.message}</div>}
       </div>
       {watch('service') === 'cog' && (
         <div className="space-y-2">
-          <label htmlFor="band" className="text-sm">
-            Input the band:
-          </label>
+          <label htmlFor="band">Band</label>
           <Input {...register('band')} type="number" />
         </div>
       )}
       {watch('service') === 'cog' && (
         <div className="space-y-2">
-          <label htmlFor="cogStyles" className="text-sm">
-            Color map:
-          </label>
+          <label htmlFor="cogStyles">Color map</label>
           <Textarea {...register('colorMap')} placeholder={'{ "key": "#ff0000" }'} />
         </div>
       )}
-      <Button type="submit">Add layer</Button>
+      <Button type="submit" size="sm">
+        Add layer
+      </Button>
     </form>
   );
 };

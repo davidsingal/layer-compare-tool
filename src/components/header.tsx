@@ -1,14 +1,20 @@
 'use client';
 
-import GoogleAdsense from '@/components/google-adsense';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from './ui/button';
 
 const Header: React.FC = () => {
   return (
-    <header className="fixed left-0 top-0 z-10 flex h-16 w-full items-center gap-2 bg-foreground px-6 text-background shadow-md">
+    <header className="flex h-16 w-full items-center gap-2 border-b px-6">
       <h1 className="text-xl font-bold">Layer Compare Tool</h1>
-      <div className="text-background/50">by David Inga</div>
-      <div className="flex h-full flex-1 items-center justify-end">
-        <GoogleAdsense />
+      <div className="text-foreground/50">by David Inga</div>
+      <div className="flex flex-1 items-center justify-end">
+        <a
+          href="https://github.com/davidsingal/layer-compare-tool"
+          className={cn(buttonVariants({ variant: 'outline' }))}
+        >
+          Github
+        </a>
       </div>
     </header>
   );
