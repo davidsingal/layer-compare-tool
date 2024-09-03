@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
-import { Adsense } from '@ctrl/react-adsense';
 
 import Header from '@/components/header';
 import Sidebar from '@/components/sidebar';
 import ActiveLayers from '@/components/active-layers';
+import GoogleAdsense from '@/components/google-adsense';
 
 const Map = dynamic(() => import('@/components/map'), { ssr: false });
 
@@ -14,14 +14,9 @@ export default function Home() {
       <main className="flex grow px-6">
         <div className="min-w-[300px] space-y-6 py-6">
           <Sidebar position="left" />
-          {process.env.NODE_ENV === 'production' && (
-            <Adsense
-              client="ca-pub-7918890133851349"
-              slot="1901695133"
-              style={{ width: 300, height: 250 }}
-              format=""
-            />
-          )}
+          <div className="h-[250px] w-full">
+            <GoogleAdsense />
+          </div>
         </div>
         <div className="flex grow p-6">
           <div className="relative grow overflow-hidden rounded-md border">
