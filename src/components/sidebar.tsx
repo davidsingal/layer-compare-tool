@@ -18,7 +18,7 @@ import {
 
 type Inputs = {
   service: 'cog' | 'wms';
-  name: string;
+  layerName: string;
   url: string;
   band?: number;
   colorMap?: string;
@@ -45,7 +45,7 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
         setLayers([
           ...layers,
           {
-            id: data.name,
+            id: data.layerName,
             service: data.service,
             source: {
               type: 'raster',
@@ -64,7 +64,7 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
         setLayers([
           ...layers,
           {
-            id: data.name,
+            id: data.layerName,
             service: data.service,
             source: { type: 'raster', tiles: [data.url], tileSize: 256 },
             layer: { type: 'raster' },
@@ -78,12 +78,12 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-2">
-        <label htmlFor="name">Type</label>
+        <label>Type</label>
         <Controller
           control={control}
           name="service"
           render={({ field }) => (
-            <Select onValueChange={field.onChange} value={field.value}>
+            <Select name={field.name} onValueChange={field.onChange} value={field.value}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select a service" />
               </SelectTrigger>
@@ -96,34 +96,48 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
         />
       </div>
       <div className="space-y-2">
-        <label htmlFor="name">Layer Name</label>
+        <label htmlFor={`${position}-layerName`}>Layer Name</label>
         <Input
-          {...register('name', { required: 'Name field is required' })}
-          className={errors.name && 'border-red-500'}
+          id={`${position}-layerName`}
+          {...register('layerName', { required: 'Layer name field is required' })}
+          className={errors.layerName && 'border-red-500'}
           placeholder="e.g. Landsat 8"
         />
-        {errors.name && <div className="text-sm text-red-500">{errors.name.message}</div>}
+        {errors.layerName && <div className="text-sm text-red-500">{errors.layerName.message}</div>}
       </div>
       <div className="space-y-2">
-        <label htmlFor="url">Dataset URL</label>
+        <label htmlFor={`${position}-url`}>Dataset URL</label>
         <Input
+          id={`${position}-url`}
           {...register('url', { required: 'URL field is required' })}
           type="url"
-          className={errors.name && 'border-red-500'}
+          className={errors.url && 'border-red-500'}
           placeholder='e.g. "https://example.com/{z}/{x}/{y}.png"'
         />
         {errors.url && <div className="text-sm text-red-500">{errors.url.message}</div>}
       </div>
       {watch('service') === 'cog' && (
         <div className="space-y-2">
-          <label htmlFor="band">Band</label>
-          <Input {...register('band')} type="number" />
+          <label htmlFor={`${position}-band`}>Band</label>
+          <Input
+            id={`${position}-band`}
+            {...register('band')}
+            type="number"
+            className={errors.band && 'border-red-500'}
+          />
+          {errors.band && <div className="text-sm text-red-500">{errors.band.message}</div>}
         </div>
       )}
       {watch('service') === 'cog' && (
         <div className="space-y-2">
-          <label htmlFor="cogStyles">Color map</label>
-          <Textarea {...register('colorMap')} placeholder={'{ "key": "#ff0000" }'} />
+          <label htmlFor={`${position}-colorMap`}>Color map</label>
+          <Textarea
+            id={`${position}-colorMap`}
+            {...register('colorMap')}
+            placeholder={'{ "key": "#ff0000" }'}
+            className={errors.colorMap && 'border-red-500'}
+          />
+          {errors.colorMap && <div className="text-sm text-red-500">{errors.colorMap.message}</div>}
         </div>
       )}
       <Button type="submit" size="sm">
