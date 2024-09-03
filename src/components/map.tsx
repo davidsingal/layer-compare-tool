@@ -38,7 +38,7 @@ const MapComponent: React.FC = () => {
           latitude: 0,
           zoom: 3,
         }}
-        mapStyle={'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'}
+        mapStyle={'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'}
         style={{
           position: 'absolute',
           top: 0,
@@ -60,7 +60,7 @@ const MapComponent: React.FC = () => {
           latitude: 0,
           zoom: 3,
         }}
-        mapStyle={'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json'}
+        mapStyle={'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'}
         style={{
           position: 'absolute',
           top: 0,
