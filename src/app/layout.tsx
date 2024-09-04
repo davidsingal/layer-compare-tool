@@ -11,7 +11,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Raster, COG, WMS Comparison Tool',
+  title: 'Raster, COG, WMS Layer Comparison Tool',
   description:
     'A tool to compare Raster, COG and WMS layers. Analyze and visualize geospatial data. Perfect for GIS professionals looking to enhance mapping accuracy and efficiency.',
 };
