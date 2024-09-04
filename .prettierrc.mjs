@@ -1,3 +1,7 @@
+/**
+ * @see https://prettier.io/docs/en/configuration.html
+ * @type {import("prettier").Config}
+ */
 const config = {
   semi: true,
   tabWidth: 2,
@@ -6,4 +10,4 @@ const config = {
   plugins: ['prettier-plugin-tailwindcss'],
 };
 
-module.exports = config;
+export default config;
