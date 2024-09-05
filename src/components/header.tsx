@@ -5,7 +5,7 @@ import { buttonVariants } from './ui/button';
 
 const Header: React.FC = () => {
   return (
-    <header className="flex h-16 w-full shrink-0 items-center gap-2 border-b px-6">
+    <header className="flex w-full shrink-0 items-center gap-2 border-b px-6 max-lg:flex-col max-lg:py-6 max-lg:text-center lg:h-16">
       <h1 className="text-xl font-bold">Raster, COG, WMS Layer Comparison Tool</h1>
       <div className="text-foreground/50">by David Inga</div>
       <div className="flex flex-1 items-center justify-end">
