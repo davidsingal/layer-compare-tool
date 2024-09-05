@@ -5,13 +5,14 @@ import dynamic from 'next/dynamic';
 import Sidebar from '@/components/sidebar';
 import ActiveLayers from '@/components/active-layers';
 import GoogleAdsense from '@/components/google-adsense';
+import { Media } from '@/components/media';
 
 const Map = dynamic(() => import('@/components/map'), { ssr: false });
-const MediaQuery = dynamic(() => import('react-responsive'), { ssr: false });
+// const MediaQuery = dynamic(() => import('react-responsive'), { ssr: false });
 
 const Desktop: React.FC = () => (
   <>
-    <MediaQuery minWidth={1024}>
+    <Media greaterThanOrEqual="lg" className="flex grow px-6">
       <div className="min-w-[300px] space-y-6 py-6">
         <Sidebar position="left" />
         <div className="h-[250px] w-full">
@@ -28,14 +29,14 @@ const Desktop: React.FC = () => (
       <div className="min-w-[300px] space-y-6 py-6">
         <Sidebar position="right" />
       </div>
-    </MediaQuery>
-    <MediaQuery maxWidth={1024}>
+    </Media>
+    <Media lessThan="lg" className="flex grow px-6">
       <div className="py-6">
         <p className="text-md text-center">
           Sorry, this application is only available on Desktop devices.
         </p>
       </div>
-    </MediaQuery>
+    </Media>
   </>
 );
 
