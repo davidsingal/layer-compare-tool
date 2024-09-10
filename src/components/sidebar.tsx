@@ -3,6 +3,8 @@
 import { useCallback } from 'react';
 import { useAtom } from 'jotai';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import WMSCapabilities from 'wms-capabilities';
+import { useMutation } from '@tanstack/react-query';
 
 import { leftLayersAtom, rightLayersAtom } from '@/store/layers';
 import { Input } from '@/components/ui/input';
@@ -22,6 +24,7 @@ type Inputs = {
   url: string;
   band?: number;
   colorMap?: string;
+  wmsLayer?: string;
 };
 
 const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }) => {
@@ -36,6 +39,18 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
     defaultValues: {
       service: 'cog',
       band: 1,
+    },
+  });
+
+  const getWMSCapabilities = useMutation({
+    mutationFn: async (url: string) => {
+      const response = await fetch(`${url}?service=WMS&request=GetCapabilities`);
+      const xml = await response.text();
+      const json = new WMSCapabilities(xml, DOMParser).toJSON();
+      return json;
+    },
+    onSuccess: (data) => {
+      console.log(data);
     },
   });
 
@@ -60,7 +75,34 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
           },
         ]);
       }
-      if (data.service === 'wms' || data.service === 'tiles') {
+      if (data.service === 'wms') {
+        const defaultWMSParams = {
+          format: 'image/png',
+          service: 'WMS',
+          version: '1.1.1',
+          request: 'GetMap',
+          srs: 'EPSG:3857',
+          transparent: true,
+          width: 256,
+          height: 256,
+          layers: data.wmsLayer,
+        };
+        const wmsParams = new URLSearchParams(
+          JSON.parse(JSON.stringify(defaultWMSParams)),
+        ).toString();
+        const wmsURL = new URL(data.url);
+        const wmsURLString = `${wmsURL.origin}${wmsURL.pathname}?bbox={bbox-epsg-3857}&${wmsParams}`;
+        setLayers([
+          ...layers,
+          {
+            id: data.layerName,
+            service: data.service,
+            source: { type: 'raster', tiles: [wmsURLString], tileSize: 256 },
+            layer: { type: 'raster' },
+          },
+        ]);
+      }
+      if (data.service === 'tiles') {
         setLayers([
           ...layers,
           {
@@ -75,8 +117,15 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
     [layers, setLayers],
   );
 
+  const handleChange = useCallback(() => {
+    if (watch('service') === 'wms') {
+      getWMSCapabilities.mutate(watch('url'));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [watch]);
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onChange={handleChange} onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="space-y-2">
         <label>Type</label>
         <Controller
@@ -139,6 +188,34 @@ const Sidebar: React.FC<{ position: 'right' | 'left' }> = ({ position = 'left' }
             className={errors.colorMap && 'border-red-500'}
           />
           {errors.colorMap && <div className="text-sm text-red-500">{errors.colorMap.message}</div>}
+        </div>
+      )}
+      {watch('service') === 'wms' && (
+        <div className="space-y-2">
+          <label>WMS Layer</label>
+          <Controller
+            control={control}
+            name="wmsLayer"
+            render={({ field }) => (
+              <Select
+                disabled={getWMSCapabilities.isPending}
+                name={field.name}
+                onValueChange={field.onChange}
+                value={field.value}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a WMS Layer" />
+                </SelectTrigger>
+                <SelectContent className="max-h-[300px]">
+                  {getWMSCapabilities.data?.Capability.Layer.Layer.map((layer) => (
+                    <SelectItem key={layer.Title} value={layer.Title}>
+                      {layer.Title}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )}
+          />
         </div>
       )}
       <Button type="submit" size="sm">
